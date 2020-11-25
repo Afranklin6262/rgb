@@ -13,7 +13,7 @@ var resetPressed = true;
 
 
 init();
-
+//going by the variables here, I'm assuming that this is what determines whether the score rises or lowers depending on your result
 function init(){
 	setupModeButtons();
 	setupSquares();
@@ -27,7 +27,7 @@ function init(){
 	}
 	reset();
 }
-
+//it looks like this contains the easy button, I don't see the hard button in this specific segment but it has both 3 and 6 squares as options
 function setupModeButtons(){
 	for(var i = 0; i < modeButtons.length; i++){
 		modeButtons[i].addEventListener("click", function(){
@@ -39,7 +39,7 @@ function setupModeButtons(){
 		});
 	}
 }
-
+//this looks like the main meat of the game so to speak, containing most of the click listeners that determine if you're correct or not and when to display certain dialogue/score/square color change
 function setupSquares(){
 	for(var i = 0; i < squares.length; i++){
 	//add click listeners to squares
@@ -71,7 +71,7 @@ function setupSquares(){
 	}
 }
 
-
+//not entirely sure on this one, possibly how it determines if you clicked the correct color? the link doesn't open anything specific for me
 async function updateColorName(){
 	const regex = /\([^\)]+\)/g; 
 	var rgbColors = pickedColor.match(regex); 
@@ -91,7 +91,7 @@ async function updateColorName(){
 		colorDisplay.textContent = colorData.name.value + "-ish"; 
 	}
 }
-
+//picks random colors from an array when the reset button is clicked
 function reset(){
 	resetPressed = true;
 	colors = generateRandomColors(numSquares);
@@ -116,7 +116,7 @@ function reset(){
 resetButton.addEventListener("click", function(){
 	reset();
 })
-
+//changes the squares' colors to what was chosen for them upon reset/loadup?
 function changeColors(color){
 	//loop through all squares
 	for(var i = 0; i < squares.length; i++){
@@ -124,12 +124,12 @@ function changeColors(color){
 		squares[i].style.background = color;
 	}
 }
-
+//function name is pickColor, it looks to be what returns the randomized colors. a lot of these seem to have very similar purposes unless they're all interconnected and i'm just not realizing
 function pickColor(){
 	var random = Math.floor(Math.random() * colors.length);
 	return colors[random];
 }
-
+//creates an array and pushes the colors into it
 function generateRandomColors(num){
 	//make an array
 	var arr = []
@@ -141,7 +141,7 @@ function generateRandomColors(num){
 	//return that array
 	return arr;
 }
-
+//picks random colors from rgb scale, maybe it shows the numbers as well?
 function randomColor(){
 	//pick a "red" from 0 - 255
 	var r = Math.floor(Math.random() * 256);
